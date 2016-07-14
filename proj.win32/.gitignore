@@ -12,6 +12,7 @@
 
 # Build results
 [Dd]ebug/
+[Dd]ebug.win32/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
@@ -42,6 +43,7 @@ dlldata.c
 
 # DNX
 project.lock.json
+project.fragment.lock.json
 artifacts/
 
 *_i.c
@@ -250,9 +252,3 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
-proj.android
-proj.android-studio
-proj.ios_mac
-proj.linux
-proj.win8.1-universal
-cocos2d
