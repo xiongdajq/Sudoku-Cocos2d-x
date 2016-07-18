@@ -31,4 +31,5 @@ bool instruction::init() {
 	auto bgi = Sprite::create("instruction_final1.png");
 	bgi->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->addChild(bgi, 0);
+	return true;
 }
