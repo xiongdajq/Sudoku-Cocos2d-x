@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "instruction.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
@@ -42,8 +43,30 @@ bool HelloWorld::init()
 	auto closeItem = MenuItemImage::create("buttons/button_end.png",
 										   "buttbutton_end_click.png",
 		CC_CALLBACK_1(HelloWorld::quickGame, this));
-	
+	auto menu_quick = Menu::create(closeItem, NULL);
+	menu_quick->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height * 2 / 8));
+	this->addChild(menu_quick, 1);
 
+	auto startItem = MenuItemImage::create("buttons/button_start.png",
+		"buttbutton_start_click.png",
+		CC_CALLBACK_1(HelloWorld::quickGame, this));
+	auto menu_start = Menu::create(startItem, NULL);
+	menu_start->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height * 5 / 8));
+	this->addChild(menu_start, 1);
+
+	auto instruction = MenuItemImage::create("buttons/button_instruction.png",
+		"buttbutton_instruction_click.png",
+		CC_CALLBACK_1(HelloWorld::intro, this));
+	auto menu_instruction = Menu::create(instruction, NULL);
+	menu_instruction->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height * 4 / 8));
+	this->addChild(menu_instruction, 1);
+
+	auto coder = MenuItemImage::create("buttons/button_coder.png",
+		"buttbutton_coder_click.png",
+		CC_CALLBACK_1(HelloWorld::quickGame, this));
+	auto menu_coder = Menu::create(coder, NULL);
+	menu_coder->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height * 3 / 8));
+	this->addChild(menu_coder, 1);
     /////////////////////////////
     // 3. add your codes below...
 
@@ -80,4 +103,17 @@ bool HelloWorld::init()
     addChild(rootNode);
 
     return true;
+}
+
+void HelloWorld::quickGame(cocos2d::Ref* pSender) {
+	Director::getInstance()->end();
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+	exit(0);
+#endif
+}
+
+void HelloWorld::intro(cocos2d::Ref* pSender) {
+	Scene* introduct = instruction::createScene();
+	Director::getInstance()->pushScene(introduct);
 }
