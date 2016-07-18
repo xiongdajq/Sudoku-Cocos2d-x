@@ -62,7 +62,7 @@ bool HelloWorld::init()
 	this->addChild(menu_instruction, 1);
 
 	auto coder = MenuItemImage::create("buttons/button_coder.png",
-		"buttbutton_coder_click.png",
+		"buttons/button_coder_click.png",
 		CC_CALLBACK_1(HelloWorld::quickGame, this));
 	auto menu_coder = Menu::create(coder, NULL);
 	menu_coder->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height * 3 / 8));

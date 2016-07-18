@@ -31,5 +31,16 @@ bool instruction::init() {
 	auto bgi = Sprite::create("instruction_final1.png");
 	bgi->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->addChild(bgi, 0);
+
+	auto back_image = MenuItemImage::create("back.png", "back.png", CC_CALLBACK_1(instruction::back, this));
+	back_image->setPosition(Vec2(origin.x + visibleSize.width / 8 * 7, origin.y + visibleSize.height / 4));
+
+	auto back_item = Menu::create(back_image, NULL);
+	back_item->setPosition(Vec2(origin.x, origin.y));
+	this->addChild(back_item, 100);
 	return true;
+}
+
+void instruction::back(cocos2d::Ref* pSender) {
+	Director::getInstance()->popScene();
 }
