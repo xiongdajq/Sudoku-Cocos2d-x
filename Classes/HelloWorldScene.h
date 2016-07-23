@@ -13,6 +13,8 @@ public:
     virtual bool init();
 	void quickGame(cocos2d::Ref* pSender);
 	void intro(cocos2d::Ref* pSender);
+	void coder(cocos2d::Ref* pSender);
+	void game(cocos2d::Ref* pSender);
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 };

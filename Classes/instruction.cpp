@@ -38,7 +38,15 @@ bool instruction::init() {
 	auto back_item = Menu::create(back_image, NULL);
 	back_item->setPosition(Vec2(origin.x, origin.y));
 	this->addChild(back_item, 100);
-	return true;
+
+
+	/*auto closeItem = MenuItemImage::create("back.png",
+		"back.png",
+		CC_CALLBACK_1(instruction::back, this));
+	auto menu_quick = Menu::create(closeItem, NULL);
+	menu_quick->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height * 2 / 8));
+	this->addChild(menu_quick, 1);
+	return true;*/
 }
 
 void instruction::back(cocos2d::Ref* pSender) {
