@@ -1,5 +1,7 @@
 #pragma once
 #include "cocos2d.h"
+
+using namespace std;
 class GameScene : public cocos2d::Layer
 {
 public:
@@ -12,9 +14,9 @@ private:
 		int row;
 		int col;
 		int num;
-		Sprite* image;
-		Label* label;
+		cocos2d::Sprite* image;
+		cocos2d::Label* label;
 	}labels;
-	cocos2d::Vector<labels*> map;
+	std::vector<labels> map;
 };
 
