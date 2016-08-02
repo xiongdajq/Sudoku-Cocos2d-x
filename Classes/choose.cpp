@@ -41,6 +41,7 @@ bool Choose::init() {
 	auto confuseItem = Menu::create(confuseImage, NULL);
 	confuseItem->setPosition(Vec2(origin.x + visibileSize.width * 3/ 4, origin.y + visibileSize.height / 2));
 	this->addChild(confuseItem, 1);
+	return true;
 }
 
 void Choose::enter(cocos2d::Ref* pSender) {

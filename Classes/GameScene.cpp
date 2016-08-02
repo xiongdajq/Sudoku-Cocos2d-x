@@ -40,6 +40,7 @@ bool GameScene::init() {
 			labels_.col = j;
 			labels_.row = i;
 			labels_.label = la;
+			labels_.canChange = true;
 			map.push_back(labels_);
 		}
 	}
@@ -57,8 +58,8 @@ bool GameScene::init() {
 	clear->setTitleText("C");
 	clear->setPosition(Vec2(origin.x + visibleSize.width / 4 + 380, origin.y + visibleSize.height / 8));
 	this->addChild(clear, 1);
-	schedule(schedule_selector(GameScene::update), 0.1f, kRepeatForever, 0);
-	addClickListener();
+	//schedule(schedule_selector(GameScene::update), 0.1f, kRepeatForever, 0);
+	//addClickListener();
 	return true;
 }
 
@@ -68,6 +69,9 @@ void GameScene::buttonEvent(Ref * pSender, ui::Widget::TouchEventType type)
 	string a = button->getTitleText();
 	if (type == ui::Widget::TouchEventType::ENDED) {
 		//todos
+		if (current.canChange) {
+			current.label->setString(a);
+		}
 	}
 }
 
@@ -81,12 +85,27 @@ void GameScene::addClickListener()
 	//todos
 	auto dispather = Director::getInstance()->getEventDispatcher();
 	auto eventListenerMouse = EventListenerMouse::create();
-	eventListenerMouse->onMouseDown = CC_CALLBACK_2(GameScene::onMouseDown, this);
+	eventListenerMouse->onMouseDown = CC_CALLBACK_1(GameScene::onMouseDown, this);
 }
 
-void GameScene::onMouseDown(Touch * touch, Event* ev)
+void GameScene::onMouseDown(Event* ev1)
 {
-	auto target = static_cast<Sprite*>(ev->getCurrentTarget());
-
+	EventMouse* ev = (EventMouse*)ev1;
+	Vec2 loc = ev->getLocation();
+	int size = map.size();
+	/*for (int i = 0; i < 9; i++) {
+		for (int j = 0; j < 9; j++) {
+			map.at(i + j).label->setColor(Color3B::BLUE);
+			Vec2 mao = (map.at(i + j)).image->getPosition();
+			Vec2 origin = Vec2(mao.x - 19, mao.y - 19);
+			Size size = Size(38.0, 38.0);
+			Rect rect = Rect(origin, size);
+			if (rect.containsPoint(loc)) {
+				current = map.at(i + j);
+				map.at(i + j).label->setColor(Color3B::RED);
+				return;
+			}
+		}
+	}*/
 }
 
